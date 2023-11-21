@@ -1,0 +1,319 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="{% static "images/s1.png" %}" type="png">
+
+  <title> Mamá Macha </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/style.css" rel="stylesheet" />
+  <!-- Carrito de compras -->
+  <link href="../static/css/carrito.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../static/css/responsive.css" rel="stylesheet" />
+
+  <style>
+    .contenido-adicional {
+        display: none; /* Por defecto, el contenido adicional está oculto */
+    }
+  </style>
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+    
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{% url 'index'%}">
+            <span>
+              Mamá Macha
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto ">
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'index'%}">Principal </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'menu'%}">Menu</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'about'%}">Nosotros <span class="sr-only">(current)</span> </a>
+              </li>
+              
+            </ul>
+            <div class="user_option">
+              <a href="" class="user_link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+              
+            
+                
+              <div class="container-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="icon-cart"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                  />
+                </svg>
+                <div class="count-products">
+                  <span id="contador-productos">0</span>
+                </div>
+        
+                <div class="container-cart-products hidden-cart">
+                  <div class="cart-product">
+                    <div class="info-cart-product">
+                                    <span class="cantidad-producto-carrito">1</span>
+                                    <p class="titulo-producto-carrito">Zapatos Nike</p>
+                                    <span class="precio-producto-carrito">$80</span>
+                                </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="icon-close"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </div>
+                            <div class="cart-total">
+                                <h3>Total:</h3>
+                                <span class="total-pagar">$200</span>
+                            </div>
+                </div>
+              </div>
+                      <!-- se cierra el carrito--->
+              <form class="form-inline">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+              <a href="{% url 'login'%}" class="order_online">
+                Registrate
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container  ">
+
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="{% static 'images/n_mama.png' %}" alt="Logo_MamaMacha" class="momma">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Mamá Macha
+              </h2>
+            </div>
+            <p>
+              Bienvenido a Salsas Mamá Macha, un emprendimiento familiar dedicado a la creación de salsas artesanales y una exquisita línea de salsas de michelada. 
+              Desde nuestros inicios en el año 2015, nos enorgullecemos de ofrecer productos de alta calidad que añaden un toque de sabor auténtico a tus platillos favoritos.
+            </p>
+          </div>
+            <button onclick="mostrarContenido()" class="btn_mas">Saber Más</button>
+            <div class="contenido-adicional">
+              <p><p>
+              <h2>Acerca de Nosotros</h2>
+              Bienvenidos a Mamá Macha, el corazón y alma de los sabores auténticos de México. Desde nuestro hogar en Ecatepec, hemos estado sirviendo salsas artesanales desde el año 2015.
+              <br>
+              <h2><p>Nuestra Historia<p></h2>
+
+              Todo comenzó con el amor de una madre por la cocina tradicional mexicana. Mamá Macha, con su experiencia culinaria arraigada en generaciones, decidió compartir su pasión por los sabores auténticos con el mundo. Así nació Mamá Macha, una empresa dedicada a crear salsas que encarnan la esencia misma de la cocina mexicana.
+
+              <h2><p>Nuestro Compromiso<p></h2>
+
+              En Mamá Macha, entendemos que la calidad no es un compromiso, es una promesa. Por eso, cada día seleccionamos los ingredientes más frescos y auténticos para preparar nuestras salsas. Nuestro equipo de expertos en sabor trabaja incansablemente para garantizar que cada bocado te transporte a las cocinas hogareñas de México.
+
+              <h2><p>Nuestra Esencia<p></h2>
+
+              Lo que nos distingue es la autenticidad en cada gota. Nuestras salsas están hechas a mano, con cariño y atención al detalle, para asegurar que cada jarra sea un testimonio de la tradición culinaria mexicana. No sólo vendemos salsas, ofrecemos una experiencia gastronómica que te hace sentir como si Mamá Macha misma estuviera cocinando para ti.
+
+              <h2><p>Nuestro Legado<p></h2>
+
+              Desde el inicio, nos hemos dedicado a llevar el sabor de México a tu mesa de manera personal. Cada entrega diaria es más que un simple servicio, es una conexión directa entre nuestra cocina y tu hogar. Esta relación cercana y genuina es lo que nos ha permitido crecer y convertirnos en un pilar en la comunidad de Ecatepec y más allá.
+
+              <p>En Mamá Macha, no sólo hacemos salsas, creamos memorias alrededor de la mesa. Te invitamos a unirte a nuestra familia y descubrir la auténtica esencia de la cocina mexicana en cada bocado.<p>
+      
+          <script>
+              function mostrarContenido() {
+                  var contenido = document.querySelector('.contenido-adicional');
+                  if (contenido.style.display === 'none') {
+                      contenido.style.display = 'block';
+                  } else {
+                      contenido.style.display = 'none';
+                  }
+              }
+          </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <div class="footer_contact">
+            <h4>
+              Contact Us
+            </h4>
+            <div class="contact_link_box">
+              <a href="geo: 19.535282209109422, -99.02912654980506?=Ecatepec">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                   Ubicación
+                </span>
+              </a>
+              <a href="https://wa.me/5513354677" target="_blank"></a>
+                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                <span>
+                  WhatsApp
+                </span>
+              </a>
+              <a href="mailto: marco.vallejo2000@gmail.com?subject=¡Nuevas Delicias en Mamá Macha! Descubre nuestros últimos sabores!&body=Haznos saber tú opinion" target="_blank">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  mama_macha@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <div class="footer_detail">
+            <a href="" class="footer-logo">
+              Mamá Macha
+            </a>
+            <p>
+              Bienvenido a Salsas Mamá Macha, un emprendimiento familiar dedicado a la creación de salsas artesanales.
+            </p>
+            <div class="footer_social">
+              <a href="https://www.facebook.com/SalsasMamaMacha" target="_blank">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-pinterest" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <h4>
+            Horario de Atención
+          </h4>
+          <p>
+            Todos los días
+          </p>
+          <p>
+            10.00 Am -08.00 Pm
+          </p>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="displayYear"></span> Mamá Macha
+          <a href="https://html.design/"></a><br><br>
+          &copy; <span id="displayYear"></span> Acondicionado por MValle
+          <a href="https://themewagon.com/" target="_blank"></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script src="{% static 'js/bootstrap.js'%}"></script>
+  <!-- Carrito de compras -->
+  <script src="{% static 'js/carrito.js'%}"></script>
+  <!-- owl slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- isotope js -->
+  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+  <!-- nice select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <!-- custom js -->
+  <script src="{% static 'js/custom.js'%}"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>

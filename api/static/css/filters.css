@@ -1,0 +1,128 @@
+.gr_filtro .filters_mich {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    list-style-type: none;
+    margin-top: -10px 0 -15px 0;
+  }
+  
+  .gr_filtro .filters_mich li {
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  
+  .gr_filtro .filters_mich li.active {
+    background-color: #c54a4a;
+    color: #ffffff;
+  }
+  /*filtro de salsa guajillo*/
+.gr_filtro .filters_gua {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    list-style-type: none;
+    margin-top: -10px 0 -15px 0;
+  }
+  
+.gr_filtro .filters_gua li {
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  
+.gr_filtro .filters_gua li.active {
+    background-color: #c54a4a;
+    color: #ffffff;
+  }
+
+  /*filtro de salsa Snacks*/
+.gr_filtro .filters_Snacks {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    list-style-type: none;
+    margin-top: -10px 0 -15px 0;
+  }
+  
+.gr_filtro .filters_Snacks li {
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  
+.gr_filtro .filters_Snacks li.active {
+    background-color: #c54a4a;
+    color: #ffffff;
+  }
+
+  /*filtro de salsa Snacks*/
+.gr_filtro .filters_morita {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    list-style-type: none;
+    margin-top: -10px 0 -15px 0;
+  }
+  
+.gr_filtro .filters_morita li {
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  
+.gr_filtro .filters_morita li.active {
+    background-color: #c54a4a;
+    color: #ffffff;
+  }
+
+  /*filtro de salsa Arbol*/
+.gr_filtro .filters_arbol {
+  padding: 0;
+  display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    list-style-type: none;
+    margin-top: -10px 0 -15px 0;
+    
+  }
+  
+.gr_filtro .filters_arbol li {
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  
+.gr_filtro .filters_arbol li.active {
+    background-color: #c54a4a;
+    color: #ffffff;
+  }

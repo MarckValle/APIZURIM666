@@ -1,0 +1,670 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="{% static 'images/s1.png' %}" type="png">
+
+  <title> Mamá Macha </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+    integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+    crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/style.css" rel="stylesheet" />
+  <!-- Carrito de Compras -->
+  <link href="../static/css/carrito.css" rel="stylesheet" />
+  <!-- Filtros de precios -->
+  <link href="../static/css/filters.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../static/css/responsive.css" rel="stylesheet" />
+
+
+  </style>
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{%url 'index'%}">
+            <span>
+              Mamá Macha
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto ">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index'%}">Principal </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'menu'%}">Menu <span class="sr-only">(current)</span> </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about'%}">Nosotros</a>
+              </li>
+
+            </ul>
+            <div class="user_option">
+              <a href="" class="user_link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+
+
+
+              <!--carrito de compras-->
+
+              <div id="debug-output"></div>
+
+              <div class="container-icon">
+                <div class="container-cart-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="icon-cart">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                  </svg>
+                  <div class="count-products">
+                    <span id="contador-productos">0</span>
+                  </div>
+
+                </div>
+
+                <div class="container-cart-products hidden-cart">
+                  <div class="row-product">
+                    <div class="cart-product">
+
+                      <div class="info-cart-product">
+                        <span class="cantidad-producto-carrito"></span>
+                        <p class="titulo-producto-carrito"></p>
+                        <span class="precio-producto-carrito"></span>
+                      </div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="icon-close">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+
+                    </div>
+                  </div>
+
+
+                  <div class="cart-total">
+                    <h3>Total:</h3>
+                    <span class="total-pagar">$200</span>
+                  </div>
+
+                </div>
+
+              </div>
+              <!-- se cierra el carrito--->
+              <form class="form-inline">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+              <a href="{% url 'login'%}" class="order_online">
+                Registrate/Inicia Sesión
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- food section -->
+
+  <section class="food_section layout_padding">
+
+
+    <div class="container">
+
+      <div class="heading_container heading_center">
+        <h2>
+          Nuestras Salsas
+        </h2>
+      </div>
+
+      <ul class="filters_menu layout_padding-bottom">
+        <li class="active" data-filter="*">Todos</li>
+        <li data-filter=".clasica">Clasica</li>
+        <li data-filter=".miche">Michelada</li>
+        <li data-filter=".especial">Especial</li>
+      </ul>
+
+      <div class="filters-content">
+        <div class="row grid">
+          <div class="col-sm-6 col-lg-4 all clasica">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{% static 'images/chiltepil.jpg'%}" alt="">
+                </div>
+                <div class="detail-box">
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                    repellendus
+                    sed eaque
+                  </p>
+                  <div class="options">
+                    <h5 id="chiltepilname"> Salsa Chiltepil 250gr</h5>
+                    <h6 id="precio" class="price">$90</h6>
+                    <button title="Añadir al carrito" class="btn-add-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>                      
+
+                    </button>
+                  </div>
+                  <section class="gr_filtro">
+                    <div>
+                      <ul class="filters_gr">
+                        <li id="250gr" class="active" onclick="change(this);">250 gr</li>
+                        <li data-filter=".100gr" id="100gr" onclick="change(this);">100 gr</li>
+                      </ul>
+                      <script>
+                        function change(element) {
+                          var btn1 = document.getElementById('250gr');
+                          var btn2 = document.getElementById('100gr');
+                          var precio1 = document.getElementById('precio');
+                          var nameS = document.getElementById('chiltepilname');
+
+                          precio1.innerText = '$90';
+                          var elementos = document.getElementsByClassName("filters_gr")[0].getElementsByTagName("li");
+
+                          for (var i = 0; i < elementos.length; i++) {
+                            elementos[i].classList.remove("active");
+                          }
+
+                          element.classList.add("active");
+
+                          if (element.id === '250gr') {
+                            precio1.innerText = '$90';
+                            nameS.innerText = 'Salsa Chiltepil 250gr';
+                          } else if (element.id === '100gr') {
+                            precio1.innerText = '$50';
+                            nameS.innerText = 'Salsa Chiltepil 100gr';
+                          }
+                          window.onload = function () {
+                            precio1.innerText = '$90';
+                            nameS.innerText = 'Salsa Chiltepil 250gr';
+                          }
+                        }
+                      </script>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all miche">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{% static 'images/michelada.jpg'%}" alt="">
+                </div>
+                <div class="detail-box">
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                    repellendus
+                    sed eaque
+                  </p>
+                  <div class="options">
+                    <h5 id="namemichelada">Salsa Michelada 250gr</h5>
+                    <h6 id="michprecio" class="price">$90</h6>
+                    <button title="Añadir al carrito" class="btn-add-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1.5em"
+                        viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <style>
+                          svg {
+                            fill: #ffffff
+                          }
+                        </style>
+                        <path
+                          d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                      </svg>
+                    </button>
+                  </div>
+                  <section class="gr_filtro">
+                    <div>
+                      <ul class="filters_mich">
+                        <li id="michelada200" class="active" onclick="change1(this);">250 gr</li>
+                        <li id="michelada100" onclick="change1(this);">100 gr</li>
+                      </ul>
+                      <script>
+                        function change1(element) {
+                          var btn1 = document.getElementById('michelda200');
+                          var btn2 = document.getElementById('michelada100');
+                          var preciomich = document.getElementById('michprecio');
+                          var nameMichelada = document.getElementById('namemichelada');
+
+                          var elementos = document.getElementsByClassName("filters_mich")[0].getElementsByTagName("li");
+
+                          for (var i = 0; i < elementos.length; i++) {
+                            elementos[i].classList.remove("active");
+                          }
+
+                          element.classList.add("active");
+                          if (element.id === 'michelada200') {
+                            preciomich.innerText = '$90';
+                            nameMichelada.innerText = 'Salsa Michelada 250gr';
+                          } else if (element.id === 'michelada100') {
+                            preciomich.innerText = '$50';
+                            nameMichelada.innerText = 'Salsa Michelada 100gr';
+                          }
+                        }
+                      </script>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all clasica">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{% static 'images/guajillo.jpg'%}" alt="">
+                </div>
+                <div class="detail-box">
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                    repellendus
+                    sed eaque
+                  </p>
+                  <div class="options">
+                    <h5 id="guajilloName"> Salsa Guajillo 250gr</h5>
+                    <h6 id="precioGua" class="price">$90</h6>
+                    <button title="Añadir al carrito" class="btn-add-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1.5em"
+                        viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <style>
+                          svg {
+                            fill: #ffffff
+                          }
+                        </style>
+                        <path
+                          d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                      </svg>
+
+                    </button>
+                  </div>
+                  <section class="gr_filtro">
+                    <div>
+                      <ul class="filters_gua">
+                        <li id="gua200" class="active" onclick="changeGua(this);">250 gr</li>
+                        <li id="gua100" onclick="changeGua(this);">100 gr</li>
+                      </ul>
+                      <script>
+                        function changeGua(element) {
+                          var btn1 = document.getElementById('gua200');
+                          var btn2 = document.getElementById('gua100');
+                          var preciomich = document.getElementById('precioGua');
+                          var guajillo = document.getElementById('guajilloName');
+
+                          var elementos = document.getElementsByClassName("filters_gua")[0].getElementsByTagName("li");
+
+                          for (var i = 0; i < elementos.length; i++) {
+                            elementos[i].classList.remove("active");
+                          }
+
+                          element.classList.add("active");
+                          if (element.id === 'gua200') {
+                            preciomich.innerText = '$90';
+                            guajillo.innerText = 'Salsa Guajillo 250gr';
+                          } else if (element.id === 'gua100') {
+                            preciomich.innerText = '$50';
+                            guajillo.innerText = 'Salsa Guajillo 100gr';
+                          }
+                        }
+                      </script>
+                    </div>
+                  </section>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all especial">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{% static 'images/especial.jpg'%}" alt="">
+                </div>
+                <div class="detail-box">
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                    repellendus
+                    sed eaque
+                  </p>
+                  <div class="options">
+                    <h5 id="snackSal"> Salsa Snacks 250gr</h5>
+                    <h6 id="precioSna" class="price">$90</h6>
+                    <button title="Añadir al carrito" class="btn-add-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1.5em"
+                        viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <style>
+                          svg {
+                            fill: #ffffff
+                          }
+                        </style>
+                        <path
+                          d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                      </svg>
+
+                    </button>
+                  </div>
+                  <section class="gr_filtro">
+                    <div>
+                      <ul class="filters_Snacks">
+                        <li id="Sna200" class="active" onclick="changeSnack(this);">250 gr</li>
+                        <li id="Sna100" onclick="changeSnack(this);">100 gr</li>
+                      </ul>
+                      <script>
+                        function changeSnack(element) {
+                          var btn1 = document.getElementById('Sna200');
+                          var btn2 = document.getElementById('Sna100');
+                          var precioSna = document.getElementById('precioSna');
+                          var nameSna = document.getElementById('snackSal');
+
+                          var elementos = document.getElementsByClassName("filters_Snacks")[0].getElementsByTagName("li");
+
+                          for (var i = 0; i < elementos.length; i++) {
+                            elementos[i].classList.remove("active");
+                          }
+
+                          element.classList.add("active");
+                          if (element.id === 'Sna200') {
+                            precioSna.innerText = '$90';
+                            nameSna.innerText = 'Salsa Snacks 250gr';
+                          } else if (element.id === 'Sna100') {
+                            precioSna.innerText = '$50';
+                            nameSna.innerText = 'Salsa Snacks 100gr';
+                          }
+                        }
+                      </script>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all clasica">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{% static 'images/morita.jpg'%}" alt="">
+                </div>
+                <div class="detail-box">
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                    repellendus
+                    sed eaque
+                  </p>
+                  <div class="options">
+                    <h5 id="moritaName">Salsa Morita 250gr</h5>
+                    <h6 id="precioMorita" class="price">$90</h6>
+                    <button title="Añadir al carrito" class="btn-add-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1.5em"
+                        viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <style>
+                          svg {
+                            fill: #ffffff
+                          }
+                        </style>
+                        <path
+                          d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                      </svg>
+                    </button>
+                  </div>
+                  <section class="gr_filtro">
+                    <div>
+                      <ul class="filters_morita">
+                        <li id="morita200" class="active" onclick="changemorita(this);">250 gr</li>
+                        <li id="morita100" onclick="changemorita(this);">100 gr</li>
+                      </ul>
+                      <script>
+                        function changemorita(element) {
+                          var btn1 = document.getElementById('morita200');
+                          var btn2 = document.getElementById('morita100');
+                          var precioMorita = document.getElementById('precioMorita');
+                          var nameMorita = document.getElementById('moritaName');
+
+                          var elementos = document.getElementsByClassName("filters_morita")[0].getElementsByTagName("li");
+
+                          for (var i = 0; i < elementos.length; i++) {
+                            elementos[i].classList.remove("active");
+                          }
+
+                          element.classList.add("active");
+                          if (element.id === 'morita200') {
+                            precioMorita.innerText = '$90';
+                            nameMorita.innerText = 'Salsa Morita 250gr';
+                          } else if (element.id === 'morita100') {
+                            precioMorita.innerText = '$50';
+                            nameMorita.innerText = 'Salsa Morita 100gr';
+                          }
+                        }
+                      </script>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all clasica">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{% static 'images/arbol.jpg'%}" alt="">
+                </div>
+                <div class="detail-box">
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                    repellendus
+                    sed eaque
+                  </p>
+                  <div class="options">
+                    <h5 id="arbolName">Salsa Arbol 250gr</h5>
+                    <h6 id="precioArb" class="price">$90</h6>
+                    <button title="Añadir al carrito" class="btn-add-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1.5em"
+                        viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <style>
+                          svg {
+                            fill: #ffffff
+                          }
+                        </style>
+                        <path
+                          d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                      </svg>
+
+                    </button>
+                  </div>
+                  <section class="gr_filtro">
+                    <div>
+                      <ul class="filters_arbol">
+                        <li id="arbol200" class="active" onclick="changeArbol(this);">250 gr</li>
+                        <li id="arbol100" onclick="changeArbol(this);">100 gr</li>
+                      </ul>
+                      <script>
+                        function changeArbol(element) {
+                          var btn1 = document.getElementById('arbol200');
+                          var btn2 = document.getElementById('arbol100');
+                          var precioArbol = document.getElementById('precioArb');
+                          var nameArbol = document.getElementById('arbolName');
+
+                          var elementos = document.getElementsByClassName("filters_arbol")[0].getElementsByTagName("li");
+
+                          for (var i = 0; i < elementos.length; i++) {
+                            elementos[i].classList.remove("active");
+                          }
+
+                          element.classList.add("active");
+                          if (element.id === 'arbol200') {
+                            precioArbol.innerText = '$90';
+                            nameArbol.innerText = 'Salsa Arbol 250gr';
+                          } else if (element.id === 'arbol100') {
+                            precioArbol.innerText = '$50';
+                            nameArbol.innerText = 'Salsa Arbol 100gr';
+                          }
+                        }
+                      </script>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <a href="">
+        View More
+      </a>
+    </div>
+    </div>
+  </section>
+
+  <!-- end food section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <div class="footer_contact">
+            <h4>
+              Contactanos
+            </h4>
+            <div class="contact_link_box">
+              <a href="geo: 19.535282209109422, -99.02912654980506?=Ecatepec">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Ubicación
+                </span>
+              </a>
+              <a href="https://wa.me/5513354677" target="_blank">
+                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                <span>
+                  WhatsApp
+                </span>
+              </a>
+              <a href="mailto: marco.vallejo2000@gmail.com?subject=¡Nuevas Delicias en Mamá Macha! Descubre nuestros últimos sabores!&body=Haznos saber tú opinion"
+                target="_blank">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  mama_macha@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <div class="footer_detail">
+            <a href="" class="footer-logo">
+              Mamá Macha
+            </a>
+            <p>
+              Bienvenido a Salsas Mamá Macha, un emprendimiento familiar dedicado a la creación de salsas artesanales.
+            </p>
+            <div class="footer_social">
+              <a href="https://www.facebook.com/SalsasMamaMacha" target="_blank">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-pinterest" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <h4>
+            Horario de Atención
+          </h4>
+          <p>
+            Todos los días
+          </p>
+          <p>
+            10.00 Am -08.00 Pm
+          </p>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="displayYear"></span>
+          <a href="">Mamá Macha</a><br><br>
+          &copy; <span id="">Acondicionado por MValle</span>
+          <a href="" target="_blank"></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <!-- bootstrap js -->
+  <script src="{% static 'js/bootstrap.js'%}"></script>
+  <!-- Carrito -->
+  <script src="{% static 'js/carrito.js'%}"></script>
+  <!-- owl slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- isotope js -->
+  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+  <!-- nice select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <!-- custom js -->
+  <script src="{% static '../static/js/custom.js'%}"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>

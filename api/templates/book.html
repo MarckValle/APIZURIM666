@@ -1,0 +1,19 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/s1.png' %}" type="png">
+    <title>Dashboard Power BI</title>
+  </head>
+  <body>
+    <div id="paypal-button-container">
+      <iframe title="Encuestas" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=c593a5cd-f653-4529-b73c-9a5d54a475c2&autoAuth=true&ctid=dcec6cc1-cc36-4bdf-a82c-eaddb2de00ea" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+      <p id="result-message"></p>
+      <!-- Replace the "test" client-id value with your client-id -->
+      <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+      <script src="app.js"></script>
+  </body>
+</html>
