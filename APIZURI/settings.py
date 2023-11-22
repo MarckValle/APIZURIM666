@@ -90,13 +90,9 @@ DATABASES = {'default': dj_database_url.config(default='postgres://db_macha_user
 
 DATABASES = {
     
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'datos_macha',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost', # o la dirección de tu servidor de base de datos
-        'PORT': '5432', # el puerto por defecto para PostgreSQL
+     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
     }
 }
 
