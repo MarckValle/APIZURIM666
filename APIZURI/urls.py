@@ -41,3 +41,6 @@ urlpatterns = [
     path('success/', views.success, name='success'),
     path('cancel/', views.cancel, name='cancel'),
 ]
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns # new
+urlpatterns += staticfiles_urlpatterns() # new
