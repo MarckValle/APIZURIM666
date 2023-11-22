@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'APIZURI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
+DATABASES = {
     
-#     'default': dj_database_url.parse(env('DATABASE_URL'))
-# } 
+    'default': dj_database_url.parse("postgres://db_macha_user:5XCFeGkBrum2PCF1I1Mrz2dkdkKVHYCr@dpg-clep33ufoq1c73e3ipa0-a.oregon-postgres.render.com/db_macha")
+} 
 
 DATABASES = {
     
