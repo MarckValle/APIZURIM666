@@ -84,20 +84,17 @@ WSGI_APPLICATION = 'APIZURI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+import os 
 DATABASES = {
     
-    'default': dj_database_url.parse("postgres://db_macha_user:5XCFeGkBrum2PCF1I1Mrz2dkdkKVHYCr@dpg-clep33ufoq1c73e3ipa0-a.oregon-postgres.render.com/db_macha")
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
 } 
 
 DATABASES = {
     
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'datos_macha',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost', # o la dirección de tu servidor de base de datos
-        'PORT': '5432', # el puerto por defecto para PostgreSQL
+   'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
     }
 }
 
