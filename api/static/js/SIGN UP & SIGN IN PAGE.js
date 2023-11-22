@@ -49,32 +49,12 @@ function validarFormulario() {
         //     confirmButtonText:"OK!"
         //    });4
         toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration":   "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-          }
-          toastr["warning"]("Para poder registrarte, debes completar los campos.", "Advertencia!")
-         return false;
-        }else{
-            document.getElementById('a-form').submit();
-            toastr.options = {
-                "closeButton": false,
+            
+              "closeButton": false,
                 "debug": false,
                 "newestOnTop": false,
                 "progressBar": false,
-                "positionClass": "toast-top-center",
+                "positionClass": "toast-top",
                 "preventDuplicates": false,
                 "onclick": null,
                 "showDuration": "300",
@@ -85,13 +65,25 @@ function validarFormulario() {
                 "hideEasing": "linear",
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
-              }
-              toastr["success"]("Te has registrado correctamente, Verifica tu correo", "Registro Exitoso!")
+            }      
+          toastr["info"]("Para poder registrarte, debes completar los campos.", "Advertencia!")
+        
+         return false;
+        }else{
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Te has registrado con éxito. \n Verifica tu correo.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+            
         }
-        // Otras validaciones...
+        
         
         return true;
     }
+
+
 function validarLogin() {
     var campo1 = document.getElementById('em').value;
     var campo2 = document.getElementById('ps').value;

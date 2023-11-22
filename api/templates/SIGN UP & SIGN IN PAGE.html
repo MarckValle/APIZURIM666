@@ -19,9 +19,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static '../static/css/SIGN UP & SIGN IN PAGE.css'%}"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="{%static '../static/css/toastr.min.css'%}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    </link>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
   </head>
   <body>
+    <!-- mi_template.html -->
+    
+
      <div class="main">
+      
       <div class="container a-container" id="a-container">
         <form class="form" id="a-form" method="POST"  >
           {% csrf_token %}
@@ -44,7 +51,41 @@
           <button class="form__button button switch-btn" type="submit" onclick="validarLogin"  name = "signin" href="{%url 'index1'%}">Inicia Sesión</button>
           
         </form>
-          
+        {% if messages %}
+        {% for message in messages %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const messageType = "{{ message.tags }}";
+                let icon, text;
+
+                switch (messageType) {
+                    case 'success':
+                        icon = 'success';
+                        text = "{{ message }}";
+                        break;
+                    case 'error':
+                        icon = 'error';
+                        text = "{{ message }}";
+                        break;
+                    case 'warning':
+                        icon = 'warning';
+                        text = "{{ message }}";
+                        break;
+                    default:
+                        icon = 'info';
+                        text = "{{ message }}";
+                        break;
+                }
+
+                Swal.fire({
+                    icon: icon,
+                    title: text,
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+        {% endfor %}
+        {% endif %}
               
       </div>
       <div class="switch" id="switch-cnt">

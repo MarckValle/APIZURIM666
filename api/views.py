@@ -130,7 +130,8 @@ def formulario_verificacion(request):
         try:
             # Verificar si el correo ya existe en la base de datos
             if inicio_sesion.objects.filter(name=email).exists():
-                raise ValidationError("Este correo electrónico ya está registrado.")
+                messages.warning(request, 'Este correo electrónico ya está registrado.')
+                return render(request, 'SIGN UP & SIGN IN PAGE.html')
 
             # Guardar el usuario en la base de datos
             usuario = inicio_sesion(username=nombre, name=email, passw=pswd)
@@ -144,7 +145,7 @@ def formulario_verificacion(request):
 
             send_mail(subject, message, from_email, [email])
 
-            messages.success(request, 'USUARIO REGISTRADO. Por favor, verifica tu correo.')
+            messages.success(request, 'Usuario registrado \n. Por favor, verifica tu correo.')
             return render(request, 'SIGN UP & SIGN IN PAGE.html')
 
         except ValidationError as e:
