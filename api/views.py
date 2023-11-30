@@ -157,8 +157,8 @@ def formulario_verificacion(request):
             messages.error(request, str(e))
             return render(request, 'SignUp.html')
 
-    else:
-        return render(request, 'SignUp.html')
+  
+    return render(request, 'SignUp.html')
     
 
 
