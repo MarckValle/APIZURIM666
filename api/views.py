@@ -104,15 +104,23 @@ def login(request):
         try:
             if user == ('admin@gmail.com'):
                 return redirect('dashboard')  # Redirige a una vista llamada 'index'
-            user = cliente.objects.get(username=user, passw=password)
+
+            user = cliente.objects.get(username=user)
+            if user.passw != password:
+                messages.error(request, 'La contraseña es incorrecta!')
+                return render(request, 'SignIn.html')
+
             request.session['name'] = user.username
             return redirect('index1')  # Redirige a una vista llamada 'index'
         except cliente.DoesNotExist:
-            messages.error(request, '')
+            messages.error(request, 'Este usuario no existe!')
+            return render(request, 'SignIn.html')
         except cliente.MultipleObjectsReturned:
-            messages.error(request, 'No se puede acceder')
-        
-    return render(request,'SignIn.html')
+            messages.error(request, 'No se puede acceder, verifica tu nombre de usuario!')
+            return render(request, 'SignIn.html')
+
+    return render(request, 'SignIn.html')
+
 
 def index(request):
     nombre_usuario = request.session.get('name', None)
