@@ -1,0 +1,133 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="{% static 'images/s1.png'%}" type="png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/Upowl.carousel.min.css' %}">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'css/Upbootstrap.min.css' %}">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="{% static 'css/SignUpstyle.css' %}">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+  </link>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+  <title>Registrate</title>
+</head>
+
+<body>
+
+
+  <div class="d-md-flex half">
+    <div class="bg" style="background-image: url('../static/images/salsa.jpg'); height: 100vh; background-size: cover;">
+
+    </div>
+    <div class="contents">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-12">
+            <div class="form-block mx-auto">
+              <h3>Registrate en <strong>Mamá Macha</strong></h3>
+              <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
+              <form action="#" method="post">
+                {% csrf_token %}
+                {% csrf_token %}
+
+                {% if messages %}
+                {% for message in messages %}
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    const messageType = "{{ message.tags }}";
+                    let icon, text;
+
+                    switch (messageType) {
+                      case 'success':
+                        icon = 'success';
+                        text = "{{ message }}";
+                        break;
+                      case 'error':
+                        icon = 'error';
+                        text = "{{ message }}";
+                        break;
+                      case 'warning':
+                        icon = 'warning';
+                        text = "{{ message }}";
+                        break;
+                      default:
+                        icon = 'info';
+                        text = "{{ message }}";
+                        break;
+                    }
+
+                    Swal.fire({
+                      icon: icon,
+                      title: text,
+                      confirmButtonText: 'OK'
+                    });
+                  });
+                </script>
+                {% endfor %}
+                {% endif %}
+                <div class="form-group first">
+                  <input type="text" class="form-control" placeholder="Nombre Completo" id="username" name="nombreForm">
+                </div>
+
+                <div class="form-group first">
+                  <input type="text" class="form-control" placeholder="Edad" id="username" name="edadForm">
+                </div>
+                <div class="form-group first">
+                  <input type="text" class="form-control" placeholder="Correo" id="username" name="correoForm">
+                </div>
+                <div class="form-group first">
+                  <input type="text" class="form-control" placeholder="Domicilio" id="username" name="domicilioForm">
+                </div>
+                <div class="form-group first">
+                  <input type="text" class="form-control" placeholder="Teléfono" id="username" name="telForm">
+                </div>
+                <div class="form-group first">
+                  <input type="text" class="form-control" placeholder="Crea un nombre de usuario" id="username"
+                    name="userForm">
+                </div>
+                <div class="form-group last mb-3">
+                  <input type="password" class="form-control" placeholder="Crea una contraseña" id="password"
+                    name="passForm">
+                </div>
+
+                </label>
+                <span class="ml-auto"><a href="#" class="forgot-pass">¿Olvidaste tu contraseña?</a></span>
+                <span class="ml-auto"><a href="{% url 'SignIn'%}" class="forgot-pass">Inicia sesión aquí</a></span>
+
+                <input type="submit"  class="btn btn-block btn-primary">
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,3 +1,12 @@
-from django.test import TestCase
+from django.test import testcases
+import pytest 
 
-# Create your tests here.
+from api.models import inicio_sesion
+@pytest.mark.django_db  
+def user_creation():
+    user = inicio_sesion.objects.create_user(
+        username = 'Marco Vallejo',
+        name = 'marco.vallejo2000@gmail.com',
+        passw = '1234'
+    )
+    assert user.username == 'Marco Vallejo'
