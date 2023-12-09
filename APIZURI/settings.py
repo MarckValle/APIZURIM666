@@ -23,6 +23,7 @@ import mimetypes
 
 
 
+LOGIN_URL = '/accounts/login/'  # Adjust this to your actual login URL
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware'
 ]
 
 ROOT_URLCONF = 'APIZURI.urls'
@@ -82,6 +84,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'APIZURI.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 import dj_database_url
@@ -96,14 +99,14 @@ DATABASES = {'default': dj_database_url.config(default='postgres://db_macha_user
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / "db.sqlite3",
 #     },
-# #     'default': {
-# #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-# #         'NAME': 'MachaCloud',
-# #         'USER': 'postgres',
-# #         'PASSWORD': '1234',
-# #         'HOST': 'localhost', # o la dirección de tu servidor de base de datos
-# #         'PORT': '5432', # el puerto por defecto para PostgreSQL
-# # }
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'MachaCloud',
+#         'USER': 'postgres',
+#         'PASSWORD': '1234',
+#         'HOST': 'localhost', # o la dirección de tu servidor de base de datos
+#         'PORT': '5432', # el puerto por defecto para PostgreSQL
+# }
 # }
 
 
@@ -126,6 +129,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# settings.py
+# AUTHENTICATION_BACKENDS = ['APIZURI.backends.CustomBackend',
+#                            'django.contrib.auth.backends.ModelBackend']
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -139,7 +146,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+#autenticacion personalizada 
+# AUTH_USER_MODEL = 'api.cliente'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -169,3 +177,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PAYPAL_RECEIVER_EMAIL = 'marco.vallejo2000@gmail.com' # where cash is paid into
 PAYPAL_TEST = False
 #PAYPAL_BUY_BUTTON_IMAGE = 'https://res.cloudinary.com/the-proton-guy/image/upload/v1685882223/paypal-PhotoRoom_v9pay7.png'
+
+# settings.py
+SESSION_COOKIE_AGE = 1209600  # Dos semanas en segundos, ajusta según tus necesidades
+# settings.py
+SESSION_SAVE_EVERY_REQUEST = True
+LOGIN_URL = '/accounts/login/'  # Adjust this to your actual login URL
+LOGIN_REDIRECT_URL = '/index1/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'

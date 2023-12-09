@@ -1,4 +1,4 @@
-{% load static %}
+{%load static%}
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +18,7 @@
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
-
+  <link rel="shortcut icon" href="{% static 'images/s1.png' %}" type="png">
   <!--owl slider stylesheet -->
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -35,6 +35,7 @@
   <link href="../static/css/carrito.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="../static/css/responsive.css" rel="stylesheet" />
+  <link href="../static/css/perfil.css rel="stylesheet" />
 
   <style>
     .contenido-adicional {
@@ -73,14 +74,14 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'menu'%}">Menu</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'about'%}">Nosotros <span class="sr-only">(current)</span> </a>
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'about'%}">Nosotros </a>
               </li>
 
             </ul>
-            <div class="user_option">
-              <a href="" class="user_link">
-                <i class="fa fa-user" aria-hidden="true"></i>
+            <div class="user_option active" >
+              <a href="{% url 'perfil'%}" class="user_link"> 
+                <span class="sr-only">(current)</span> <i class="fa fa-user" aria-hidden="true"></i>
               </a>
 
 
@@ -137,93 +138,85 @@
   <!-- about section -->
 
   <section class="about_section layout_padding">
-    <div class="container  ">
-
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="{% static 'images/n_mama.png' %}" alt="Logo_MamaMacha" class="momma">
+      <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+          {% if user.is_authenticated %}
+          <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                width="150px"
+                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+                class="font-weight-bold">Edogaru</span><span class="text-black-50">{{user.email}}</span><span>
+              </span></div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                Mamá Macha
-              </h2>
+          <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Profile Settings</h4>
+              </div>
+              
+              <div class="row mt-2">
+                <div class="col-md-6"><label class="labels">nombre</label><input type="text" class="form-control"
+                    placeholder="nombre de usuario" value="{{ user.username }}"></div>
+                <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control"
+                    value="{{user.cliente.edad}}" placeholder="surname"></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
+                    class="form-control" placeholder="" value="{{user.cliente.nombre}}"></div>
+                <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text"
+                    class="form-control" placeholder="enter address line 1" value="{{ user.cliente.telefono}}"></div>
+                <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text"
+                    class="form-control" placeholder="enter address line 2" value="{{ user.cliente.domicilio }}"></div>
+                <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control"
+                    placeholder="enter address line 2" value=""></div>
+                <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control"
+                    placeholder="enter address line 2" value=""></div>
+                <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control"
+                    placeholder="enter address line 2" value=""></div>
+                <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control"
+                    placeholder="enter email id" value=""></div>
+                <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control"
+                    placeholder="education" value=""></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control"
+                    placeholder="country" value=""></div>
+                <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control"
+                    value="" placeholder="state"></div>
+              </div>
+              <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
+                  Profile</button></div>
             </div>
-            <p>
-              Bienvenido a Salsas Mamá Macha, un emprendimiento familiar dedicado a la creación de salsas artesanales y
-              una exquisita línea de salsas de michelada.
-              Desde nuestros inicios en el año 2015, nos enorgullecemos de ofrecer productos de alta calidad que añaden
-              un toque de sabor auténtico a tus platillos favoritos.
-            </p>
           </div>
-          <button onclick="mostrarContenido()" class="btn_mas">Saber Más</button>
-          <div class="contenido-adicional">
-            <p>
-            <p>
-            <h2>Acerca de Nosotros</h2>
-            Bienvenidos a Mamá Macha, el corazón y alma de los sabores auténticos de México. Desde nuestro hogar en
-            Ecatepec, hemos estado sirviendo salsas artesanales desde el año 2015.
-            <br>
-            <h2>
-              <p>Nuestra Historia
-              <p>
-            </h2>
-
-            Todo comenzó con el amor de una madre por la cocina tradicional mexicana. Mamá Macha, con su experiencia
-            culinaria arraigada en generaciones, decidió compartir su pasión por los sabores auténticos con el mundo.
-            Así nació Mamá Macha, una empresa dedicada a crear salsas que encarnan la esencia misma de la cocina
-            mexicana.
-
-            <h2>
-              <p>Nuestro Compromiso
-              <p>
-            </h2>
-
-            En Mamá Macha, entendemos que la calidad no es un compromiso, es una promesa. Por eso, cada día
-            seleccionamos los ingredientes más frescos y auténticos para preparar nuestras salsas. Nuestro equipo de
-            expertos en sabor trabaja incansablemente para garantizar que cada bocado te transporte a las cocinas
-            hogareñas de México.
-
-            <h2>
-              <p>Nuestra Esencia
-              <p>
-            </h2>
-
-            Lo que nos distingue es la autenticidad en cada gota. Nuestras salsas están hechas a mano, con cariño y
-            atención al detalle, para asegurar que cada jarra sea un testimonio de la tradición culinaria mexicana. No
-            sólo vendemos salsas, ofrecemos una experiencia gastronómica que te hace sentir como si Mamá Macha misma
-            estuviera cocinando para ti.
-
-            <h2>
-              <p>Nuestro Legado
-              <p>
-            </h2>
-
-            Desde el inicio, nos hemos dedicado a llevar el sabor de México a tu mesa de manera personal. Cada entrega
-            diaria es más que un simple servicio, es una conexión directa entre nuestra cocina y tu hogar. Esta relación
-            cercana y genuina es lo que nos ha permitido crecer y convertirnos en un pilar en la comunidad de Ecatepec y
-            más allá.
-
-            <p>En Mamá Macha, no sólo hacemos salsas, creamos memorias alrededor de la mesa. Te invitamos a unirte a
-              nuestra familia y descubrir la auténtica esencia de la cocina mexicana en cada bocado.
-            <p>
-
-              <script>
-                function mostrarContenido() {
-                  var contenido = document.querySelector('.contenido-adicional');
-                  if (contenido.style.display === 'none') {
-                    contenido.style.display = 'block';
-                  } else {
-                    contenido.style.display = 'none';
-                  }
-                }
-              </script>
+          {% else %}
+                 <p>Inicia sesión para ver tu perfil.</p>
+             {% endif %}
+          <div class="col-md-4">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i
+                    class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+              <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text"
+                  class="form-control" placeholder="experience" value=""></div> <br>
+              <div class="col-md-12"><label class="labels">Additional Details</label><input type="text"
+                  class="form-control" placeholder="additional details" value=""></div>
+            </div>
           </div>
-        </div>
       </div>
+    </div>
+    </div>
+
+    <!-- Resto del contenido específico de la vista de pago -->
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{% static 'js/carrito.js' %}"></script>
+
+    </div>
+    </div>
+    <div class="product-container">
+
+    </div>
+    </div>
+    </div>
     </div>
   </section>
 

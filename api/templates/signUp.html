@@ -42,7 +42,7 @@
             <div class="form-block mx-auto">
               <h3>Registrate </strong></h3>
               <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
-              <form action="#" method="post">
+              <form method="post">
                 {% csrf_token %}
                 {% csrf_token %}
 
@@ -108,7 +108,7 @@
 
                 </label>
                 <span class="ml-auto"><a href="#" class="forgot-pass">¿Olvidaste tu contraseña?</a></span>
-                <span class="ml-auto"><a href="{% url 'SignIn'%}" class="forgot-pass">Inicia sesión aquí</a></span>
+                <span class="ml-auto"><a href="{% url 'login'%}" class="forgot-pass">Inicia sesión aquí</a></span>
 
                 <input type="submit" class="btn btn-block btn-primary">
 

@@ -119,9 +119,13 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="{% url 'login'%}" class="order_online">
-                Registrate
-              </a>
+              {% if user.is_authenticated %}
+                  <a href="{% url 'logout' %}" class="order_online">Cerrar Sesión</a>
+                  {% else %}
+                  <a href="{% url 'login'%}" class="order_online">
+                    Registrate
+                  </a>
+                  {% endif %}
             </div>
           </div>
         </nav>

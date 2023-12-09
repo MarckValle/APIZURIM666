@@ -25,7 +25,10 @@ const agregarProductoAlCarrito = (e) => {
             price: product.querySelector('h6').textContent,
         };
 
+
+        //Comparar si existe el producto
         const exist = allproducts.some(product => product.title === infoProduct.title)
+
 
         if (exist) {
             const products = allproducts.map(product => {
@@ -46,19 +49,19 @@ const agregarProductoAlCarrito = (e) => {
     }
 };
 
-
+    
 
 rowProduct.addEventListener('click', e => {
-	if (e.target.classList.contains('icon-close')) {
-		const product = e.target.parentElement;
-		const title = product.querySelector('p').textContent;
+    if (e.target.classList.contains('icon-close')) {
+        const product = e.target.parentElement;
+        const title = product.querySelector('p').textContent;
 
-		allproducts = allproducts.filter(
-			product => product.title !== title
-		);
+        allproducts = allproducts.filter(
+            product => product.title !== title
+        );
 
-		showHTML();
-	}
+        showHTML();
+    }
 });
 
 const showHTML = () => {
@@ -86,10 +89,12 @@ const showHTML = () => {
                     <p class="titulo-producto-carrito">${product.title}</p>
                     <span class="precio-producto-carrito">${product.price}</span>
                     </div>
+                   
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="icon-close">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
+                    
                         `;
 
             rowProduct.append(containerProduct);
@@ -100,15 +105,15 @@ const showHTML = () => {
         });
 
         valorTotal.innerText = `$${total}`;
-     
+
         countProducts.innerText = totalProducts;
         console.log(total);
-        enviarTotalAlServidor(total);  
-        
+        enviarTotalAlServidor(total);
+
     }
 
     // Debugging: Mostrar el estado actual de allproducts
-   
+
 };
 
 
@@ -134,3 +139,6 @@ const enviarTotalAlServidor = (total, callback) => {
         }
     });
 };
+
+
+

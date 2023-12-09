@@ -1,16 +1,40 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
+# class UsuarioManager(BaseUserManager):
+#     def create_user(self, correo, username, nombre, password = None):
+#         if not correo:
+#             raise ValueError('El usuario debe tener un correo electronico.')
+#         usuario = self.model(
+#             username = username,
+#             correo = self.normalize_email(correo),
+#             nombre = nombre 
+            
+#         )
+#         usuario.set_password(password)
+#         usuario.save()
+#         return usuario
+
+#     def create_superuser(self, correo, username, nombre, password):
+#         usuario = self.create_user(
+#             correo,
+#             username = username,
+#             nombre = nombre,
+#             password = password
+#         )
+#         usuario.usuario_administrador = True
+#         usuario.save()
+#         return usuario
+
 
 class cliente(models.Model):
-    idCliente = models.AutoField(primary_key=True,db_column='id_cliente')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     nombre = models.CharField(max_length=100, db_column='nombre')
     edad = models.IntegerField(db_column='edad')
-    correo = models.CharField(max_length=100,unique=True,db_column='correo')
     domicilio = models.TextField(db_column='Domicilio')
     telefono = models.TextField(max_length=100, db_column='telefono')
-    username = models.CharField(unique=True,max_length=100, db_column='username')
-    passw = models.CharField(max_length=100, db_column='pasw')
+    
+
     class Meta: 
         db_table='cliente'
 
@@ -78,3 +102,11 @@ class datos(models.Model):
     p8 = models.CharField(max_length=100, db_column='pre8')
     class Meta: 
         db_table='datos'
+
+class status (models.Model):
+    id_status = models.AutoField(primary_key=True, db_column='id_status')
+    user = models.ForeignKey(cliente, on_delete=models.CASCADE, db_column='id_cliente')
+    estado = models.BooleanField(default=False, db_column='estado')  # True: Activo, False: Inactivo
+
+    class Meta:
+        db_table='Status'

@@ -22,6 +22,7 @@ from api.views import Catalogo
 from api.views import Nosotros
 from api.views import Carrito
 from api.views import pay
+from api.views import Catalogo
 from api import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -29,17 +30,18 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('SignUp/', views.formulario_verificacion,name='SignUp'),
-    path('SignIn/', views.login,name='SignIn'),
+    path('accounts/login/', views.login,name='login'),
+    path('perfil/', views.perfil,name='perfil'),
     path('dashboard/', Dashboard.as_view(),name='dashboard'),
-    path('index1/', views.index, name='index1'), 
     path('', inicio.as_view(), name='index'),
-    path('Menu/', Catalogo.as_view(), name='menu'),
+    path('Menu/', views.Catalogo, name='menu'),
     path('Acerca De/', Nosotros.as_view(), name='about'),
     path('CarritoCompras/', Carrito.as_view(), name='carrito'),
     path('paypalpruebas', pay.as_view(), name='paypal'),
     path('payment/', views.CheckOut, name='payment'),
     path('success/', views.success, name='success'),
     path('cancel/', views.cancel, name='cancel'),
+    path('logout/', views.cierre, name='logout'),
 ]
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns # new

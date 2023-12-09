@@ -218,3 +218,23 @@ header{
     background-color: #ffbe33;
     border-radius: 10px;
   }
+  
+  @media screen and (max-width: 400px) {
+    .container-cart-products {
+      width: 60%;
+  
+      .cart-product {
+        font-size: 16px;
+        padding: 10px;
+      }
+  
+      .cart-total {
+        font-size: 18px;
+      }
+  
+      .cart-empty {
+        font-size: 30px;
+      }
+    }
+  }
+  

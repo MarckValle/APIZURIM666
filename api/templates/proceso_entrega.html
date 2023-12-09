@@ -1,4 +1,4 @@
-{% load static %}
+{%load static%}
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +15,7 @@
   <link rel="shortcut icon" href="{% static " images/s1.png" %}" type="png">
 
   <title> Mamá Macha </title>
-
+  <link rel="shortcut icon" href="{% static 'images/s1.png' %}" type="png">
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
 
@@ -139,92 +139,19 @@
   <section class="about_section layout_padding">
     <div class="container  ">
 
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="{% static 'images/n_mama.png' %}" alt="Logo_MamaMacha" class="momma">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                Mamá Macha
-              </h2>
-            </div>
-            <p>
-              Bienvenido a Salsas Mamá Macha, un emprendimiento familiar dedicado a la creación de salsas artesanales y
-              una exquisita línea de salsas de michelada.
-              Desde nuestros inicios en el año 2015, nos enorgullecemos de ofrecer productos de alta calidad que añaden
-              un toque de sabor auténtico a tus platillos favoritos.
-            </p>
-          </div>
-          <button onclick="mostrarContenido()" class="btn_mas">Saber Más</button>
-          <div class="contenido-adicional">
-            <p>
-            <p>
-            <h2>Acerca de Nosotros</h2>
-            Bienvenidos a Mamá Macha, el corazón y alma de los sabores auténticos de México. Desde nuestro hogar en
-            Ecatepec, hemos estado sirviendo salsas artesanales desde el año 2015.
-            <br>
-            <h2>
-              <p>Nuestra Historia
-              <p>
-            </h2>
+      
+    <!-- Resto del contenido específico de la vista de pago -->
 
-            Todo comenzó con el amor de una madre por la cocina tradicional mexicana. Mamá Macha, con su experiencia
-            culinaria arraigada en generaciones, decidió compartir su pasión por los sabores auténticos con el mundo.
-            Así nació Mamá Macha, una empresa dedicada a crear salsas que encarnan la esencia misma de la cocina
-            mexicana.
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{% static 'js/carrito.js' %}"></script>
 
-            <h2>
-              <p>Nuestro Compromiso
-              <p>
-            </h2>
-
-            En Mamá Macha, entendemos que la calidad no es un compromiso, es una promesa. Por eso, cada día
-            seleccionamos los ingredientes más frescos y auténticos para preparar nuestras salsas. Nuestro equipo de
-            expertos en sabor trabaja incansablemente para garantizar que cada bocado te transporte a las cocinas
-            hogareñas de México.
-
-            <h2>
-              <p>Nuestra Esencia
-              <p>
-            </h2>
-
-            Lo que nos distingue es la autenticidad en cada gota. Nuestras salsas están hechas a mano, con cariño y
-            atención al detalle, para asegurar que cada jarra sea un testimonio de la tradición culinaria mexicana. No
-            sólo vendemos salsas, ofrecemos una experiencia gastronómica que te hace sentir como si Mamá Macha misma
-            estuviera cocinando para ti.
-
-            <h2>
-              <p>Nuestro Legado
-              <p>
-            </h2>
-
-            Desde el inicio, nos hemos dedicado a llevar el sabor de México a tu mesa de manera personal. Cada entrega
-            diaria es más que un simple servicio, es una conexión directa entre nuestra cocina y tu hogar. Esta relación
-            cercana y genuina es lo que nos ha permitido crecer y convertirnos en un pilar en la comunidad de Ecatepec y
-            más allá.
-
-            <p>En Mamá Macha, no sólo hacemos salsas, creamos memorias alrededor de la mesa. Te invitamos a unirte a
-              nuestra familia y descubrir la auténtica esencia de la cocina mexicana en cada bocado.
-            <p>
-
-              <script>
-                function mostrarContenido() {
-                  var contenido = document.querySelector('.contenido-adicional');
-                  if (contenido.style.display === 'none') {
-                    contenido.style.display = 'block';
-                  } else {
-                    contenido.style.display = 'none';
-                  }
-                }
-              </script>
+        </div>  
+    </div><div class="product-container">
+    
+    </div>
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- end about section -->

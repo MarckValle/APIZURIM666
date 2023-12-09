@@ -1,17 +1,18 @@
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from rest_framework.views import APIView
 from api.models import datos
-from api.models import cliente
+from api.models import cliente 
+from api.models import status
 from django.db.models import Count
-from django.db.models import Sum
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-
-from django.shortcuts import render
 import paypalrestsdk
+from django.contrib.auth import logout
+
+
 def success(request):
     # Aquí puedes realizar acciones adicionales después de una transacción exitosa
     return render(request, 'success.html')  # Puedes crear una plantilla "success.html" con un mensaje de éxito
@@ -25,10 +26,12 @@ class Home(APIView):
     template_name="SIGN UP & SIGN IN PAGE.html"
     def get(self, request):
         return render(request, self.template_name)
+
 class Carrito(APIView):
     template_name="book.html"
     def get(self, request):
         return render(request, self.template_name)
+
 class pay(APIView):
     template_name="book copy.html"
     def get(self, request):
@@ -37,18 +40,24 @@ class pay(APIView):
         return render(request, self.template_name)
     
 class inicio(APIView):
+     
     template_nam="index.html"
     def get(self, request):
         return render(request, self.template_nam)
     def post(self, request):
         return render(request, self.template_nam)
+    
+def Catalogo (request):
+    if request.user.is_authenticated:
+        # El usuario está autenticado, permite el acceso a la vista
+        return render(request, 'menu.html')
+    else:
+        # Redirige al usuario a la página de inicio de sesión
+        return redirect('login')
+    
+    
+    
         
-class Catalogo(APIView):
-    template_nam="menu.html"
-    def get(self, request):
-        return render(request, self.template_nam)
-    def post(self, request):
-        return render(request, self.template_nam)
 class Nosotros(APIView):
     template_nam="about.html"
     def get(self, request):
@@ -95,38 +104,72 @@ def formulario(request):
         return render(request,'SIGN UP & SIGN IN PAGE.html')
     else:
         return render(request,'SIGN UP & SIGN IN PAGE.html')
-    
+
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.forms import AuthenticationForm
+
 def login(request):
-    if request.method == 'POST':
-        user = request.POST.get('userForm')  # Utiliza get() para evitar KeyError
-        password = request.POST.get('passForm')
+    if request.method == 'GET':
+        # Enviar una instancia del formulario al template para que pueda ser renderizado
+        return render(request, 'SignIn.html', {'form': AuthenticationForm()})
+    else:
+        # Recuerda que user será None si la autenticación falla
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        if user is not None:
+            auth_login(request, user)
+            return redirect('index')
+        else:
+            print(request.POST)
+            messages.error(request, 'Usuario no encontrado')
+            return render(request, 'SignIn.html', {'form': AuthenticationForm()})
+            # Mostrar un mensaje de error en caso de usuario no encontrado
 
-        try:
-            if user == ('admin@gmail.com'):
-                return redirect('dashboard')  # Redirige a una vista llamada 'index'
-
-            user = cliente.objects.get(username=user)
-            if user.passw != password:
-                messages.error(request, 'La contraseña es incorrecta!')
-                return render(request, 'SignIn.html')
-
-            request.session['name'] = user.username
-            return redirect('index1')  # Redirige a una vista llamada 'index'
-        except cliente.DoesNotExist:
-            messages.error(request, 'Este usuario no existe!')
-            return render(request, 'SignIn.html')
-        except cliente.MultipleObjectsReturned:
-            messages.error(request, 'No se puede acceder, verifica tu nombre de usuario!')
-            return render(request, 'SignIn.html')
-
-    return render(request, 'SignIn.html')
+def cierre(request):
+    # Llamada a la función de logout
+    logout(request)
+    # Redirigir a la página que desees después del cierre de sesión
+    return redirect('index')
 
 
 def index(request):
     nombre_usuario = request.session.get('name', None)
     return render(request, 'index.html', {'nombre_usuario': nombre_usuario})
 
+def perfil(request):
+    usuario = request.user
+    try:
+        cliente1 = User.objects.get(username=usuario)
+        datos = cliente.objects.get(user=usuario)
+        # Aquí puedes acceder a todos los campos de Cliente
+        username = cliente1.username
+        email = cliente1.email
+        nombre = datos.nombre
+        domicilio = datos.domicilio
+        telefono = datos.telefono
+        edad = datos.edad
+        # ... otros campos
 
+        context = {
+            'usuario': username,
+            'email': email,
+            'nombre': nombre,
+            'edad': edad,
+            'domicilio': domicilio,
+            'telefono': telefono,
+            # ... otros campos
+        }
+
+        return render(request, 'perfil.html', context)
+
+    except User.DoesNotExist:
+        # Maneja el caso en el que no hay un registro de Cliente para este usuario
+        return render(request, 'perfil.html')
+    
+
+def entrega(request):
+    return render (request, 'proceso_entrega.html')
+    
+from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
 def formulario_verificacion(request):
@@ -141,15 +184,22 @@ def formulario_verificacion(request):
 
         try:
             # Verificar si el correo ya existe en la base de datos
-            if cliente.objects.filter(correo=emailF).exists() and cliente.objects.filter(username=usuarioF).exists:
+            if User.objects.filter(email=emailF).exists() and User.objects.filter(username=usuarioF).exists:
                 messages.warning(request, 'Este correo electrónico ya está registrado o verifica el nombre de usuario.')
                 return render(request, 'signUp.html')
             else:
                 # Guardar el usuario en la base de datos
-                usuario = cliente(nombre=nombreF, edad=edadF, correo=emailF, domicilio =domicilioF,
-                                   telefono=telefonoF, username=usuarioF, passw=pswdF)
+                nuevo_usuario = User(username=usuarioF, 
+                                     email=emailF, password=pswdF)
+# Establecer la contraseña (debes utilizar el método set_password)
+                nuevo_usuario.set_password(pswdF)
+                nuevo_usuario.save()
+                usuario = cliente(user=nuevo_usuario,nombre=nombreF, edad=edadF, domicilio =domicilioF, telefono=telefonoF)
                 usuario.full_clean()  # Esto verifica las restricciones del modelo
                 usuario.save()
+
+# Guardar el usuario en la base de datos
+            
 
                 # Enviar correo de verificación
                 subject = 'Verificación de registro!'
@@ -298,3 +348,5 @@ def actualizar_total(request):
         return JsonResponse({'mensaje': 'Total actualizado correctamente'})
     else:
         return JsonResponse({'error': 'Solicitud no válida'})
+    
+
